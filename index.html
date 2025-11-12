@@ -3,712 +3,376 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wangari Maathai - Raízes Afrodescendentes</title>
-  <link href="<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">>
-  <script src="/_sdk/element_sdk.js"></script>
+  <title>Wangari Maathai - Legado Verde</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
   <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      color: #2D531A;
+      background-color: #E0FFC2;
+      overflow-x: hidden;
+    }
 
-        html, body {
-            height: 100%;
-            scroll-behavior: smooth;
-        }
+    /* Cabeçalho Fixo */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background-color: #064734;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight:700; color:#E0FFC2; text-decoration:none; }
 
-        body {
-            font-family: 'Poppins', Playfair Display;
-            color: #FFFFFF;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #E0FFC2 0%, #C8E6A0 50%, #B0D080 100%);
-            min-height: 100%;
-        }
+    nav { display:flex; gap:2rem; }
+    nav a { color:#E0FFC2; text-decoration:none; font-weight:500; transition: color .3s; font-size:1rem; }
+    nav a:hover { color:#F7DC6F; }
 
-        /* Header Fixo */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #064734;
-            padding: 1.2rem 2rem;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(6, 71, 52, 0.4);
-            border-radius: 0 0 20px 20px;
-        }
+    /* Menu Mobile */
+    .menu-toggle { display: none; flex-direction: column; gap:5px; cursor:pointer; }
+    .menu-toggle span { width:25px; height:3px; background:#E0FFC2; border-radius:2px; transition:all .3s; }
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-        }
+    /* Hero */
+    .hero {
+      margin-top: 80px;
+      background: #064734;
+      padding: 6rem 5% 4rem;
+      text-align: center; color: #E0FFC2;
+    }
+    .hero h1 { font-family:'Playfair Display', serif; font-size:4rem; font-weight:700; margin-bottom:1rem; letter-spacing:2px; animation:fadeInUp 1s; }
+    .hero .subtitle { font-size:1.5rem; color:#F7DC6F; margin-bottom:1.5rem; font-weight:500; animation:fadeInUp 1.2s; }
+    .hero .quote { font-size:1.2rem; font-style:italic; margin-bottom:2.5rem; max-width:700px; margin-left:auto; margin-right:auto; animation:fadeInUp 1.4s; }
 
-        nav a {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
+    .btn-primary {
+      display:inline-block; background:#F7DC6F; color:#064734; padding:1rem 2.5rem; border-radius:10px; text-decoration:none; font-weight:700; font-size:1.1rem;
+      transition: all .3s; box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:fadeInUp 1.6s;
+    }
+    .btn-primary:hover { background:#F4D03F; transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.25); }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #E0FFC2;
-            transition: width 0.3s ease;
-        }
+    /* Projeto Escolar */
+    .project-info { background:#6E8649; padding:3rem 5%; color:#E0FFC2; }
+    .project-info h2 { font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:1rem; color:#F7DC6F; }
+    .project-info h3 { font-size:1.5rem; margin-bottom:1.5rem; font-weight:500; }
+    .project-info p { font-size:1.1rem; line-height:1.8; max-width:900px; margin:0 auto; }
 
-        nav a:hover {
-            color: #E0FFC2;
-        }
+    /* Biografia */
+    .biography { background:#6E8649; padding:5rem 5%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    .bio-image { width:100%; height:500px; border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.2); background:#2D531A; display:flex; align-items:center; justify-content:center; }
+    .bio-image img { width:100%; height:100%; display:block; object-fit:cover; }
 
-        nav a:hover::after {
-            width: 100%;
-        }
+    .bio-content h2 { font-family:'Playfair Display', serif; font-size:3rem; color:#E0FFC2; margin-bottom:2rem; }
+    .bio-content p { font-size:1.1rem; line-height:1.8; color:#E0FFC2; margin-bottom:2rem; }
 
-        /* Hero Section */
-        #home {
-            min-height: 100%;
-            background: linear-gradient(135deg, #064734 0%, #0A5D42 50%, #0E6B4F 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 40px 40px;
-        }
+    .timeline { margin-top:2rem; }
+    .timeline-item { display:flex; gap:1.5rem; margin-bottom:1.5rem; animation:fadeInLeft .8s; }
+    .timeline-year { font-family:'Playfair Display', serif; font-size:1.5rem; font-weight:700; color:#F7DC6F; min-width:80px; }
+    .timeline-text { font-size:1rem; color:#E0FFC2; line-height:1.6; }
 
-        #home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            opacity: 0.3;
-        }
+    /* Galeria */
+    .gallery { background:#2D531A; padding:5rem 5%; }
+    .gallery h2 { font-family:'Playfair Display', serif; font-size:3rem; color:#E0FFC2; text-align:center; margin-bottom:3rem; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
+    .gallery-card { background:#064734; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.3); transition:transform .3s, box-shadow .3s; cursor:pointer; }
+    .gallery-card:hover { transform:translateY(-8px); box-shadow:0 12px 32px rgba(0,0,0,0.4); }
+    .gallery-image { width:100%; height:250px; overflow:hidden; background:#E0FFC2; display:flex; align-items:center; justify-content:center; }
+    .gallery-image img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .3s; }
+    .gallery-card:hover .gallery-image img { transform:scale(1.1); }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            animation: fadeInUp 1s ease;
-        }
+    .gallery-caption { padding:1.5rem; color:#E0FFC2; }
+    .gallery-caption h3 { font-family:'Playfair Display', serif; font-size:1.5rem; margin-bottom:.5rem; color:#F7DC6F; }
+    .gallery-caption p { font-size:1rem; line-height:1.6; }
 
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+    /* Inspiração */
+    .inspiration { background:#064734; padding:5rem 5%; text-align:center; color:#E0FFC2; }
+    .inspiration h2 { font-family:'Playfair Display', serif; font-size:3rem; margin-bottom:3rem; color:#F7DC6F; }
+    .quote-box { max-width:800px; margin:0 auto 3rem; padding:2rem; background:#2D531A; border-radius:12px; border-left:5px solid #F7DC6F; }
+    .quote-box blockquote { font-family:'Playfair Display', serif; font-size:1.8rem; font-style:italic; line-height:1.6; margin-bottom:1rem; }
+    .quote-box .translation { font-size:1.2rem; color:#6E8649; font-style:italic; }
+    .team-quote { font-size:1.3rem; font-weight:500; color:#F7DC6F; max-width:700px; margin:0 auto; }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #E0FFC2;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
+    /* Equipe */
+    .team { background:#6E8649; padding:4rem 5%; text-align:center; }
+    .team h2 { font-family:'Playfair Display', serif; font-size:2.5rem; color:#E0FFC2; margin-bottom:2rem; }
+    .team-info { color:#E0FFC2; font-size:1.1rem; line-height:1.8; max-width:700px; margin:0 auto; }
+    .team-info strong { color:#F7DC6F; }
 
-        .hero-quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            color: #F0F8E8;
-        }
+    .btn-github { display:inline-flex; align-items:center; justify-content:center; background:#064734; color:#E0FFC2; padding:1rem 2rem; border-radius:10px; text-decoration:none; font-weight:600; font-size:1.1rem; margin-top:2rem; transition:all .3s; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+    .btn-github:hover { background:#2D531A; transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.3); }
+    .btn-github img { width:24px; height:24px; margin-right:8px; display:inline-block; vertical-align:middle; }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #E0FFC2 0%, #C8E6A0 100%);
-            color: #064734;
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 25px rgba(224, 255, 194, 0.3);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
+    /* Rodapé */
+    footer { background:#071E07; color:#E0FFC2; padding:2rem 5%; text-align:center; }
+    footer p { font-size:1rem; line-height:1.6; }
 
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(224, 255, 194, 0.5);
-            border-color: #E0FFC2;
-            background: #E0FFC2;
-        }
+    /* Animações */
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeInLeft { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
 
-        /* Tema do Projeto */
-        .project-theme {
-            background: linear-gradient(135deg, #0A5D42 0%, #064734 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 40px 40px 0 0;
-            margin-top: -20px;
-        }
-
-        .project-theme h2 {
-            font-size: 2rem;
-            color: #E0FFC2;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .project-theme h3 {
-            font-size: 1.5rem;
-            color: #F0F8E8;
-            margin: 2rem 0 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .project-theme p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0.95;
-        }
-
-        /* Biografia */
-        #biografia {
-            background: linear-gradient(135deg, #E0FFC2 0%, #C8E6A0 50%, #B0D080 100%);
-            padding: 6rem 2rem;
-            border-radius: 40px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(6, 71, 52, 0.2);
-        }
-
-        .bio-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .bio-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: #064734;
-        }
-
-        .bio-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: #064734;
-        }
-
-        .timeline {
-            background: rgba(6, 71, 52, 0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            border-left: 6px solid #064734;
-            box-shadow: 0 5px 20px rgba(6, 71, 52, 0.1);
-        }
-
-        .timeline-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            background: #064734;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            border: 3px solid #E0FFC2;
-        }
-
-        .timeline-year {
-            font-weight: 700;
-            color: #064734;
-            font-size: 1.2rem;
-        }
-
-        .timeline-event {
-            color: #0A5D42;
-            margin-top: 0.3rem;
-        }
-
-        .bio-image {
-            background: linear-gradient(135deg, #064734, #0A5D42);
-            border-radius: 25px;
-            padding: 2rem;
-            box-shadow: 0 15px 40px rgba(6, 71, 52, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            border: 3px solid rgba(224, 255, 194, 0.3);
-            overflow: hidden;
-        }
-
-        .bio-image img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 15px;
-            object-fit: cover;
-        }
-
-        .bio-image svg {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-        }
-
-        /* Lubgraphy */
-        #lubgraphy {
-            background: linear-gradient(135deg, #064734 0%, #0A5D42 100%);
-            padding: 6rem 2rem;
-            border-radius: 40px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(6, 71, 52, 0.3);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            color: #E0FFC2;
-        }
-
-        .gallery-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .gallery-card {
-            background: linear-gradient(135deg, #E0FFC2 0%, #C8E6A0 100%);
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(6, 71, 52, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            border: 2px solid rgba(6, 71, 52, 0.2);
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 15px 50px rgba(6, 71, 52, 0.4);
-            border-color: #064734;
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #064734, #0A5D42);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            overflow: hidden;
-        }
-
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-card:hover .gallery-image img {
-            transform: scale(1.1);
-        }
-
-        .gallery-caption {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .gallery-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #064734;
-        }
-
-        .gallery-caption p {
-            font-size: 1rem;
-            opacity: 0.8;
-            color: #0A5D42;
-        }
-
-        /* Inspiração */
-        #inspiracao {
-            background: linear-gradient(135deg, #064734 0%, #0A5D42 100%);
-            padding: 6rem 2rem;
-            text-align: center;
-            border-radius: 40px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(6, 71, 52, 0.3);
-        }
-
-        .inspiration-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .main-quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            line-height: 1.6;
-            margin-bottom: 3rem;
-            font-style: italic;
-            color: #E0FFC2;
-            position: relative;
-            padding: 2rem;
-            background: rgba(224, 255, 194, 0.1);
-            border-radius: 25px;
-            border: 2px solid rgba(224, 255, 194, 0.2);
-        }
-
-        .main-quote::before,
-        .main-quote::after {
-            content: '"';
-            font-size: 4rem;
-            color: #E0FFC2;
-            position: absolute;
-            opacity: 0.6;
-        }
-
-        .main-quote::before {
-            top: 10px;
-            left: 10px;
-        }
-
-        .main-quote::after {
-            bottom: 10px;
-            right: 10px;
-        }
-
-        .team-quote {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #F0F8E8;
-            font-style: italic;
-            opacity: 0.95;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #064734 0%, #0A5D42 100%);
-            padding: 2rem;
-            text-align: center;
-            border-radius: 25px;
-            margin: 2rem;
-            box-shadow: 0 10px 30px rgba(6, 71, 52, 0.3);
-            border: 3px solid #E0FFC2;
-        }
-
-        footer p {
-            font-size: 1rem;
-            opacity: 0.95;
-            color: #E0FFC2;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                font-size: 0.9rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero-quote {
-                font-size: 1rem;
-            }
-
-            .bio-container {
-                grid-template-columns: 1fr;
-            }
-
-            .bio-text h2,
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .main-quote {
-                font-size: 1.5rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* Responsividade */
+    @media (max-width:768px) {
+      nav { position:fixed; top:80px; left:-100%; width:100%; background:#064734; flex-direction:column; padding:2rem; gap:1.5rem; transition:left .3s; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+      nav.active { left:0; }
+      .menu-toggle { display:flex; }
+      .hero h1 { font-size:2.5rem; }
+      .hero .subtitle { font-size:1.2rem; }
+      .hero .quote { font-size:1rem; }
+      .biography { grid-template-columns:1fr; gap:2rem; }
+      .bio-image { height:350px; }
+      .bio-content h2 { font-size:2rem; }
+      .gallery-grid { grid-template-columns:1fr; }
+      .quote-box blockquote { font-size:1.3rem; }
+    }
+  </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
  <body>
   <header>
-   <nav><a href="#home">Home</a> <a href="#biografia">Biografia</a> <a href="#lubgraphy">Lubgraphy</a> <a href="#inspiracao">Inspiração</a>
-   </nav>
+    <a href="#home" class="logo">Wangari Maathai</a>
+
+    <div class="menu-toggle" id="menuToggle" role="button" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav id="nav" aria-label="Navegação principal">
+      <a href="#home">Home</a>
+      <a href="#biografia">Biografia</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#inspiracao">Inspiração</a>
+    </nav>
   </header>
-  <section id="home">
-   <div class="hero-content">
-    <h1 class="hero-title" id="main-title">WANGARI MAATHAI</h1>
-    <p class="hero-subtitle" id="main-subtitle">Ativista Ambiental e Fundadora do Movimento Cinturão Verde</p>
-    <p class="hero-quote" id="inspirational-quote">Inspirando o mundo a plantar esperança, uma árvore por vez.</p><a href="#biografia" class="cta-button" id="cta-button">Saiba Mais</a>
-   </div>
+
+  <section class="hero" id="home">
+    <h1>WANGARI MAATHAI</h1>
+    <p class="subtitle">Ativista Ambiental e Fundadora do Movimento Cinturão Verde</p>
+    <p class="quote">Inspirando o mundo a plantar esperança, uma árvore por vez.</p>
+    <a href="#biografia" class="btn-primary">Saiba Mais</a>
   </section>
-  <div class="project-theme">
-   <h2>🪴 Tema do Projeto:</h2>
-   <p id="project-theme" style="font-size: 1.3rem; font-weight: 500; margin-bottom: 2rem;">Da Terra às Raízes: Natureza, Identidade e Resistência Afrodescendente</p>
-   <h3>📘 Subtema da Equipe:</h3>
-   <p id="project-subtheme" style="font-size: 1.2rem; font-weight: 500; margin-bottom: 2rem;">A África Verde: Meio Ambiente e o Legado de Wangari Maathai</p>
-   <p>Este projeto busca destacar como Wangari Maathai uniu educação, meio ambiente e protagonismo feminino africano para inspirar o mundo a cuidar da terra e das pessoas.</p>
-  </div>
-  <section id="biografia">
-   <div class="bio-container">
-    <div class="bio-text fade-in">
-     <h2>Biografia</h2>
-     <p>Wangari Muta Maathai nasceu em 1940 em Nyeri, no Quênia. Foi a primeira mulher da África Oriental e Central a obter um doutorado e se tornou uma das mais importantes ativistas ambientais do mundo.</p>
-     <p>Em 1977, fundou o Movimento Cinturão Verde, que plantou mais de 51 milhões de árvores no Quênia, combatendo o desmatamento e promovendo a sustentabilidade.</p>
-     <div class="timeline">
-      <div class="timeline-item">
-       <div class="timeline-year">
-        1940
-       </div>
-       <div class="timeline-event">
-        Nascimento em Nyeri, Quênia
-       </div>
-      </div>
-      <div class="timeline-item">
-       <div class="timeline-year">
-        1977
-       </div>
-       <div class="timeline-event">
-        Fundação do Movimento Cinturão Verde
-       </div>
-      </div>
-      <div class="timeline-item">
-       <div class="timeline-year">
-        2004
-       </div>
-       <div class="timeline-event">
-        Recebe o Prêmio Nobel da Paz
-       </div>
-      </div>
-      <div class="timeline-item">
-       <div class="timeline-year">
-        2011
-       </div>
-       <div class="timeline-event">
-        Deixa um legado de sustentabilidade e esperança
-       </div>
-      </div>
-     </div>
-    </div>
-    <div class="bio-image fade-in"><img src="imagens/wangari-maathai.jpg" alt="Wangari Maathai - Ativista Ambiental" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-     <svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="display: none;"><circle cx="100" cy="100" r="80" fill="#E0FFC2" /> <circle cx="100" cy="80" r="30" fill="#064734" /> <rect x="85" y="110" width="30" height="50" fill="#064734" rx="5" /> <path d="M 70 140 Q 100 160 130 140" stroke="#E0FFC2" stroke-width="4" fill="none" /> <circle cx="90" cy="75" r="3" fill="#E0FFC2" /> <circle cx="110" cy="75" r="3" fill="#E0FFC2" /> <path d="M 50 60 Q 100 20 150 60" fill="#064734" /> <circle cx="100" cy="100" r="85" fill="none" stroke="#064734" stroke-width="3" /> <text x="100" y="195" text-anchor="middle" fill="#E0FFC2" font-size="12" font-weight="bold">
-       Wangari Maathai
-      </text>
-     </svg>
-    </div>
-   </div>
+
+  <section class="project-info">
+    <h2>Tema: Da Terra às Raízes: Natureza, Identidade e Resistência Afrodescendente</h2>
+    <h3>Subtema: A África Verde: Meio Ambiente e o Legado de Wangari Maathai</h3>
+    <p>Este projeto escolar explora o legado inspirador de Wangari Maathai, primeira mulher africana a receber o Prêmio Nobel da Paz. Através de sua história, descobrimos como a luta ambiental se conecta com a identidade africana, a resistência e a esperança de um futuro sustentável para todos.</p>
   </section>
-  <section id="lubgraphy">
-   <h2 class="section-title">Lubgraphy</h2>
-   <div class="gallery-grid">
-    <div class="gallery-card fade-in">
-     <div class="gallery-image"><img src="imagens/baobas.jpg" alt="Baobás - Árvores Sagradas da África" onerror="this.parentElement.innerHTML='🌳';">
-     </div>
-     <div class="gallery-caption">
-      <h3>Baobás</h3>
-      <p>As árvores sagradas da África, símbolos de resistência e longevidade</p>
-     </div>
+
+  <section class="biography" id="biografia">
+    <div class="bio-image">
+      <!-- imagem PNG: coloque 'portrait.png' em imagens/ -->
+      <img src="imagens/portrait.png" alt="Retrato estilizado de Wangari Maathai" loading="lazy" decoding="async" />
     </div>
-    <div class="gallery-card fade-in">
-     <div class="gallery-image"><img src="imagens/acacia.jpg" alt="Acácia - Árvore Icônica da Savana Africana" onerror="this.parentElement.innerHTML='🌿';">
-     </div>
-     <div class="gallery-caption">
-      <h3>Acácia</h3>
-      <p>Árvore icônica da savana africana, símbolo da paisagem natural</p>
-     </div>
+
+    <div class="bio-content">
+      <h2>Biografia</h2>
+      <p>Wangari Maathai foi uma ativista ambiental queniana, bióloga e política que dedicou sua vida à proteção do meio ambiente e aos direitos das mulheres. Fundadora do Movimento Cinturão Verde, ela mobilizou milhares de mulheres africanas a plantar mais de 30 milhões de árvores, combatendo o desmatamento e promovendo a sustentabilidade.</p>
+      <p>Em 2004, tornou-se a primeira mulher africana a receber o Prêmio Nobel da Paz, reconhecida por sua contribuição ao desenvolvimento sustentável, à democracia e à paz. Seu legado continua inspirando gerações a cuidar do planeta e lutar por justiça social.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1940</div>
+          <div class="timeline-text">Nascimento em Nyeri, Quênia</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1977</div>
+          <div class="timeline-text">Fundação do Movimento Cinturão Verde</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2004</div>
+          <div class="timeline-text">Recebe o Prêmio Nobel da Paz</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2011</div>
+          <div class="timeline-text">Deixa um legado de sustentabilidade e esperança</div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-card fade-in">
-     <div class="gallery-image"><img src="imagens/elefante.jpg" alt="Elefantes Africanos" onerror="this.parentElement.innerHTML='🐘';">
-     </div>
-     <div class="gallery-caption">
-      <h3>Elefante</h3>
-      <p>Os gigantes gentis da África que Wangari lutou para proteger</p>
-     </div>
-    </div>
-    <div class="gallery-card fade-in">
-     <div class="gallery-image"><img src="imagens/rinoceronte.jpg" alt="Rinoceronte Africano" onerror="this.parentElement.innerHTML='🦏';">
-     </div>
-     <div class="gallery-caption">
-      <h3>Rinoceronte</h3>
-      <p>Espécie majestosa ameaçada que precisa de proteção ambiental</p>
-     </div>
-    </div>
-   </div>
   </section>
-  <section id="inspiracao">
-   <div class="inspiration-content">
-    <h2 class="section-title">Inspiração</h2>
-    <p class="main-quote">It's the little things citizens do. That's what will make the difference. My little thing is planting trees.</p>
-    <p class="team-quote">Cuidar da terra é cuidar do futuro. Cada semente plantada é um ato de resistência.</p>
-   </div>
+
+  <section class="gallery" id="galeria">
+    <h2>Galeria Visual</h2>
+    <div class="gallery-grid">
+
+      <div class="gallery-card">
+        <div class="gallery-image">
+          <img src="imagens/baobas.png" alt="Ilustração de baobás" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-caption">
+          <h3>🌳 Baobás</h3>
+          <p>Símbolos da vida e resistência africana, árvores milenares que guardam histórias ancestrais</p>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-image">
+          <img src="imagens/acacia.png" alt="Ilustração de craibeiras" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-caption">
+          <h3>🌴 Acácia</h3>
+          <p>Árvores do gênero Acacia, comuns em savanas e ecossistemas africanos — símbolo de resistência e adaptação</p>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-image">
+          <img src="imagens/animais-africa.png" alt="Ilustração de animais da África" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-caption">
+          <h3>🐘 Animais da África</h3>
+          <p>Vida selvagem e equilíbrio ecológico, guardiões da biodiversidade africana</p>
+        </div>
+      </div>
+
+    </div>
   </section>
+
+  <section class="inspiration" id="inspiracao">
+    <h2>Inspiração</h2>
+    <div class="quote-box">
+      <blockquote>"It's the little things citizens do. That's what will make the difference. My little thing is planting trees."</blockquote>
+      <p class="translation">"São as pequenas ações das pessoas que fazem a diferença. A minha pequena ação é plantar árvores."</p>
+    </div>
+    <p class="team-quote">"Cuidar da terra é cuidar do futuro. Cada semente plantada é um ato de resistência."</p>
+  </section>
+
+  <section class="team">
+    <h2>Identidade do Projeto</h2>
+    <div class="team-info">
+      <p><strong>Projeto:</strong> Raízes Afrodescendentes</p>
+      <p><strong>Escola:</strong> Escola Municipal São Sebastião</p>
+      <p><strong>Turma:</strong> 9º Ano B</p>
+      <p><strong>Professores Orientadores:</strong> Brigitte Stephannye, Matheus e João Paulo</p>
+
+      <a href="https://github.com/alvesdeveloperz" target="_blank" rel="noopener noreferrer" class="btn-github">
+        <img src="imagens/github.png" alt="GitHub" loading="lazy" decoding="async" /> Conheça Meus Projetos no GitHub
+      </a>
+    </div>
+  </section>
+
   <footer>
-   <p id="footer-text">Desenvolvido por: Nathanael Vieira Alves — 9º ano B<br>
-    Projeto: Raízes Afrodescendentes — Escola Municipal São Sebastião</p>
+    <p>Desenvolvido por Nathanael Vieira Alves — 9º Ano B</p>
+    <p>Projeto: Raízes Afrodescendentes — Escola Municipal São Sebastião</p>
   </footer>
+
+  <script src="/_sdk/element_sdk.js"></script>
   <script>
-        const defaultConfig = {
-            main_title: "WANGARI MAATHAI",
-            main_subtitle: "Ativista Ambiental e Fundadora do Movimento Cinturão Verde",
-            inspirational_quote: "Inspirando o mundo a plantar esperança, uma árvore por vez.",
-            cta_button: "Saiba Mais",
-            project_theme: "Da Terra às Raízes: Natureza, Identidade e Resistência Afrodescendente",
-            project_subtheme: "A África Verde: Meio Ambiente e o Legado de Wangari Maathai",
-            footer_text: "Desenvolvido por: Nathanael Vieira Alves — 9º ano B<br>Projeto: Raízes Afrodescendentes — Escola Municipal São Sebastião"
-        };
+    const defaultConfig = {
+      site_title: "WANGARI MAATHAI",
+      subtitle: "Ativista Ambiental e Fundadora do Movimento Cinturão Verde",
+      hero_quote: "Inspirando o mundo a plantar esperança, uma árvore por vez.",
+      button_text: "Saiba Mais",
+      project_theme: "Da Terra às Raízes: Natureza, Identidade e Resistência Afrodescendente",
+      project_subtheme: "A África Verde: Meio Ambiente e o Legado de Wangari Maathai",
+      bio_text: "Wangari Maathai foi uma ativista ambiental queniana, bióloga e política que dedicou sua vida à proteção do meio ambiente e aos direitos das mulheres.",
+      quote_english: "It's the little things citizens do. That's what will make the difference. My little thing is planting trees.",
+      quote_portuguese: "São as pequenas ações das pessoas que fazem a diferença. A minha pequena ação é plantar árvores.",
+      team_quote: "Cuidar da terra é cuidar do futuro. Cada semente plantada é um ato de resistência.",
+      footer_text: "Desenvolvido por Nathanael Vieira Alves — 9º Ano B"
+    };
 
-        async function onConfigChange(config) {
-            document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
-            document.getElementById('main-subtitle').textContent = config.main_subtitle || defaultConfig.main_subtitle;
-            document.getElementById('inspirational-quote').textContent = config.inspirational_quote || defaultConfig.inspirational_quote;
-            document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
-            document.getElementById('project-theme').textContent = config.project_theme || defaultConfig.project_theme;
-            document.getElementById('project-subtheme').textContent = config.project_subtheme || defaultConfig.project_subtheme;
-            document.getElementById('footer-text').innerHTML = config.footer_text || defaultConfig.footer_text;
-        }
+    async function onConfigChange(config) {
+      const heroTitle = document.querySelector('.hero h1');
+      const heroSubtitle = document.querySelector('.hero .subtitle');
+      const heroQuote = document.querySelector('.hero .quote');
+      const heroButton = document.querySelector('.btn-primary');
+      const projectTheme = document.querySelector('.project-info h2');
+      const projectSubtheme = document.querySelector('.project-info h3');
+      const quoteEnglish = document.querySelector('.quote-box blockquote');
+      const quotePortuguese = document.querySelector('.quote-box .translation');
+      const teamQuote = document.querySelector('.team-quote');
+      const footerText = document.querySelector('footer p:first-child');
 
-        function mapToCapabilities(config) {
-            return {
-                recolorables: [],
-                borderables: [],
-                fontEditable: undefined,
-                fontSizeable: undefined
-            };
-        }
+      if (heroTitle) heroTitle.textContent = config.site_title || defaultConfig.site_title;
+      if (heroSubtitle) heroSubtitle.textContent = config.subtitle || defaultConfig.subtitle;
+      if (heroQuote) heroQuote.textContent = config.hero_quote || defaultConfig.hero_quote;
+      if (heroButton) heroButton.textContent = config.button_text || defaultConfig.button_text;
+      if (projectTheme) projectTheme.textContent = `Tema: ${config.project_theme || defaultConfig.project_theme}`;
+      if (projectSubtheme) projectSubtheme.textContent = `Subtema: ${config.project_subtheme || defaultConfig.project_subtheme}`;
+      if (quoteEnglish) quoteEnglish.textContent = `"${config.quote_english || defaultConfig.quote_english}"`;
+      if (quotePortuguese) quotePortuguese.textContent = `"${config.quote_portuguese || defaultConfig.quote_portuguese}"`;
+      if (teamQuote) teamQuote.textContent = `"${config.team_quote || defaultConfig.team_quote}"`;
+      if (footerText) footerText.textContent = config.footer_text || defaultConfig.footer_text;
+    }
 
-        function mapToEditPanelValues(config) {
-            return new Map([
-                ["main_title", config.main_title || defaultConfig.main_title],
-                ["main_subtitle", config.main_subtitle || defaultConfig.main_subtitle],
-                ["inspirational_quote", config.inspirational_quote || defaultConfig.inspirational_quote],
-                ["cta_button", config.cta_button || defaultConfig.cta_button],
-                ["project_theme", config.project_theme || defaultConfig.project_theme],
-                ["project_subtheme", config.project_subtheme || defaultConfig.project_subtheme],
-                ["footer_text", config.footer_text || defaultConfig.footer_text]
-            ]);
-        }
+    function mapToCapabilities(config) {
+      return { recolorables: [], borderables: [], fontEditable: undefined, fontSizeable: undefined };
+    }
 
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange,
-                mapToCapabilities,
-                mapToEditPanelValues
-            });
-        }
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["site_title", config.site_title || defaultConfig.site_title],
+        ["subtitle", config.subtitle || defaultConfig.subtitle],
+        ["hero_quote", config.hero_quote || defaultConfig.hero_quote],
+        ["button_text", config.button_text || defaultConfig.button_text],
+        ["project_theme", config.project_theme || defaultConfig.project_theme],
+        ["project_subtheme", config.project_subtheme || defaultConfig.project_subtheme],
+        ["bio_text", config.bio_text || defaultConfig.bio_text],
+        ["quote_english", config.quote_english || defaultConfig.quote_english],
+        ["quote_portuguese", config.quote_portuguese || defaultConfig.quote_portuguese],
+        ["team_quote", config.team_quote || defaultConfig.team_quote],
+        ["footer_text", config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
 
-        // Intersection Observer para animações
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    if (window.elementSdk && typeof window.elementSdk.init === 'function') {
+      window.elementSdk.init({ defaultConfig, onConfigChange, mapToCapabilities, mapToEditPanelValues });
+    }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+    // Menu Mobile — com checagem de existência
+    (function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('nav');
+      if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+          const isActive = nav.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', String(isActive));
         });
+      }
 
-        // Smooth scroll para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+      // Fechar menu ao clicar em um link (se existir)
+      const navLinks = document.querySelectorAll('nav a');
+      if (navLinks && nav) {
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => nav.classList.remove('active'));
         });
-    </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99a0eec9e413cd6d',t:'MTc2MjM5Mzc1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+      }
 
+      // Smooth scroll (safe)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Animação de entrada
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.timeline-item, .gallery-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99d1c3d01166f628',t:'MTc2MjkwNTc5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ </body>
 </html>
-
-
